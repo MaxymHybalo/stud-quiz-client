@@ -1,47 +1,42 @@
 <template>
     <div id="app">
-  <h1>Hello App, {{msg}}</h1>
-  <p>
-    <router-link to="/login">Go to Login</router-link>
-  </p>
+  <nav class='navbar navbar-default'>
+      <div class="container-fluid">
+          <div class='navbar-header'>
+              <router-link to="/" class="navbar-brand">StudQuiz</router-link>
+          </div>
+          <div class="collapse navbar-collapse">
+              <ul class="nav navbar-nav navbar-right">
+                  <li>
+                      <router-link to="/login">Ввійти</router-link>
+                  </li>
+                  <li>
+                      <router-link to="/signup">Зареєструватися</router-link>
+                  </li>
+              </ul>
+          </div>
+      </div>
+  </nav>
+  <p>After navbar view</p>
+  <button type="button" @click='log' name="button"></button>
   <router-view></router-view>
 </div>
 </template>
 
 <script>
+
 export default {
   name: 'app',
   data(){
-      msg: 'Test message'
-    }
+      return {
+          msg: 'Test message'
+      }
+  },
+
+  methods:{
+      log(){
+         console.log(this.$store.state.ip );
+      }
+  }
 }
 </script>
-
-<style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-
-h1, h2 {
-  font-weight: normal;
-}
-
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-
-a {
-  color: #42b983;
-}
-</style>

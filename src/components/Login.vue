@@ -17,7 +17,7 @@ import axios from 'axios'
             return{
                 login: null,
                 password: null,
-                ip: 'no data from server'
+                ip: "$store.state.ip"
             }
         },
 
@@ -26,10 +26,13 @@ import axios from 'axios'
             //TODO handle wrong
             signIn(){
                 console.log('Passed', this.login, this.password);
-                axios.get('question/all', { headers: {'Authorization': 'Basic ' + btoa(this.login + ":" + this.password)}})
+                this.ip = axios.get('question/all', { headers: {'Authorization': 'Basic ' + btoa(this.login + ":" + this.password)}})
                     .then(response => this.ip = response.data)
-                    .catch(error => this.ip = error)
-            }
+                    .catch(error => {
+                        this.ip = error;
+                        this.$store.commit('change', error);
+            })
         }
     }
+}
 </script>
