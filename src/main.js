@@ -16,8 +16,7 @@ axios.defaults.baseURL = 'http://127.0.0.1:8000/';
 
 
 const router = new VueRouter({
-  // mode: 'history',
-  // base: __dirname,
+
   routes: [
     { path: '/', component: Home },
     { path: '/login', component: Login },

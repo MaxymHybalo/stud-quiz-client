@@ -18,8 +18,13 @@
       </div>
   </nav>
   <p>After navbar view</p>
-  <button type="button" @click='log' name="button"></button>
-  <router-view></router-view>
+  <div class="container">
+      <div class="row">
+          <div class="col-md-8 col-md-offset-2">
+              <router-view></router-view>
+          </div>
+      </div>
+  </div>
 </div>
 </template>
 

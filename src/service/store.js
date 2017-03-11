@@ -3,13 +3,19 @@ import Vuex from 'vuex'
 
 Vue.use(Vuex)
 
+const SET_ROLE = 'SET_ROLE'
+
 export default new Vuex.Store({
     state:{
-        ip: "null"
+        ip: "null",
+        user: {
+            role: null,
+            name: null
+        }
     },
     mutations:{
-        change(state, newIp){
-            state.ip = newIp;
+        [SET_ROLE](state,role){
+            state.user.role = role;
         }
     }
 });

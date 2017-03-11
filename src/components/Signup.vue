@@ -1,15 +1,31 @@
 <template id="signup">
-    <div class="">
+    <div class="container-fluid">
+        <signup-role v-on:next='hideRole' v-if='isSignupRole'></signup-role>
+        <p v-if='isSignupAccount'>Account sign</p>
     </div>
-</template>
 
+</template>
 <script>
+    import SignupRole from './signup/SignupRole.vue'
     export default {
         name: 'signup',
         data(){
             return {
-                msg: 'null'
+                isSignupRole: true,
+                isSignupAccount: false
             }
+        },
+        methods:{
+            hideRole(value){
+                this.$store.state.user.role = value;
+                this.$store.commit('SET_ROLE', value);
+                this.isSignupRole = false;
+                this.isSignupAccount = true;
+                console.log("Store role " + this.$store.state.user.role);
+            }
+        },
+        components:{
+            SignupRole
         }
     }
 </script>
