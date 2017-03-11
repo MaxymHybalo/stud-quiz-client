@@ -1,12 +1,14 @@
 <template id="signup">
     <div class="container-fluid">
         <signup-role v-on:next='hideRole' v-if='isSignupRole'></signup-role>
-        <p v-if='isSignupAccount'>Account sign</p>
+        <signup-account v-if='isSignupAccount'></signup-account>
     </div>
 
 </template>
 <script>
     import SignupRole from './signup/SignupRole.vue'
+    import SignupAccount from './signup/SignupAccount.vue'
+
     export default {
         name: 'signup',
         data(){
@@ -25,7 +27,8 @@
             }
         },
         components:{
-            SignupRole
+            SignupRole,
+            SignupAccount
         }
     }
 </script>
