@@ -12,6 +12,7 @@ import {sync} from 'vuex-router-sync'
 Vue.use(VueRouter)
 
 axios.defaults.baseURL = 'http://127.0.0.1:8000/';
+axios.defaults.headers.post['Content-Type'] = 'application/json';
 
 
 
