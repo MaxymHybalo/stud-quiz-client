@@ -11,20 +11,20 @@
                             <div class="col-md-6 col-md-offset-3">
                                 <div class="form-group">
                                     <label for="login">Логін</label>
-                                    <input type="text" class="form-control" id="login" placeholder="Логін"/>
+                                    <input type="text" class="form-control" id="login" v-model='login' placeholder="Логін"/>
                                 </div>
                                 <div class="form-group">
                                     <label for="email">Електронна пошта</label>
-                                    <input type="email" class="form-control" id="password" placeholder="Емейл"/>
+                                    <input type="email" class="form-control" id="password" v-model='email' placeholder="Емейл"/>
                                 </div>
                                 <div class="form-group">
                                     <label for="password">Пароль</label>
-                                    <input type="password" class="form-control" id="password" placeholder="Пароль"/>
+                                    <input type="password" class="form-control" id="password" v-model='password' placeholder="Пароль"/>
                                 </div>
                             </div>
                         </div>
                         <div class="row">
-                            <button class="col-md-3 col-md-offset-9" type="button">Далі</button>
+                            <button class="col-md-3 col-md-offset-9" type="button" @click='next'>Далі</button>
                         </div>
                     </div>
                 </form>
@@ -34,6 +34,18 @@
 </template>
 <script>
     export default{
-        name: 'signup-account'
+        name: 'signup-account',
+        data(){
+            return {
+                login: null,
+                email: null,
+                password: null
+            }
+        },
+        methods:{
+            next(){
+                this.$emit('next', this.login, this.email, this.password);
+            }
+        }
     }
 </script>
