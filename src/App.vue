@@ -11,7 +11,7 @@
                       <router-link to="/login">Ввійти</router-link>
                   </li>
                   <li>
-                      <router-link to="/signup">Зареєструватися</router-link>
+                      <router-link to="/signup">Реєстрація</router-link>
                   </li>
               </ul>
           </div>
@@ -45,3 +45,8 @@ export default {
   }
 }
 </script>
+<style>
+    .container-fluid{
+        padding-top: 0.5em;
+    }
+</style>

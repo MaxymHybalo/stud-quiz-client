@@ -10,7 +10,7 @@
                     <button class="col-md-4 col-md-offset-4 btn btn-primary" v-bind:class="{active: parentActive}" @click="enable('parent')" type="button">Батьки</button>
                 </div>
                 <div class="row" style="margin-top: 3.5em">
-                    <button class="col-md-3 col-md-offset-9" type="button" @click='next'>Далі</button>
+                    <button class="col-md-3 col-md-offset-9  btn btn-info" type="button" @click='next'>Далі</button>
                 </div>
             </div>
             </div>

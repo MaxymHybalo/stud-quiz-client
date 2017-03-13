@@ -24,7 +24,7 @@
                             </div>
                         </div>
                         <div class="row">
-                            <button class="col-md-3 col-md-offset-9" type="button" @click='next'>Далі</button>
+                            <button class="col-md-3 col-md-offset-9  btn btn-info" type="button" @click='next'>Далі</button>
                         </div>
                     </div>
                 </form>

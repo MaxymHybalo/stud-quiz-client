@@ -9,6 +9,7 @@ import VueRouter from 'vue-router'
 import store from './service/store'
 
 import {sync} from 'vuex-router-sync'
+
 Vue.use(VueRouter)
 
 axios.defaults.baseURL = 'http://127.0.0.1:8000/';
