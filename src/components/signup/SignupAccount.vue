@@ -6,6 +6,7 @@
         <div class="panel panel-label">
             <div class="container-fluid">
                 <form>
+                    <!-- TODO clear cascade .container-fluid, like in AddCategoryComponent -->
                     <div class="container-fluid">
                         <div class="row">
                             <div class="col-md-6 col-md-offset-3">

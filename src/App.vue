@@ -17,7 +17,7 @@
           </div>
       </div>
   </nav>
-  <p>After navbar view</p>
+  <router-link to="/category">Редактор</router-link>
   <div class="container">
       <div class="row">
           <div class="col-md-8 col-md-offset-2">
@@ -27,7 +27,6 @@
   </div>
 </div>
 </template>
-
 <script>
 
 export default {
@@ -45,8 +44,3 @@ export default {
   }
 }
 </script>
-<style>
-    .container-fluid{
-        padding-top: 0.5em;
-    }
-</style>

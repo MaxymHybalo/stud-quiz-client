@@ -3,6 +3,9 @@ import App from './App.vue'
 import Home from './components/Home.vue'
 import Login from './components/Login.vue'
 import Signup from './components/Signup.vue'
+import Category from './components/category/Category.vue'
+import AddCategory from './components/category/AddCategory.vue'
+
 
 import axios from 'axios'
 import VueRouter from 'vue-router'
@@ -22,7 +25,9 @@ const router = new VueRouter({
   routes: [
     { path: '/', component: Home },
     { path: '/login', component: Login },
-    { path: '/signup', component: Signup }
+    { path: '/signup', component: Signup },
+    { path: '/category', component: Category},
+    { path: '/category/new', component: AddCategory}
   ]
 })
 
