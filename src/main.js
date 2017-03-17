@@ -6,6 +6,7 @@ import Signup from './components/Signup.vue'
 import Category from './components/category/Category.vue'
 import AddCategory from './components/category/AddCategory.vue'
 import CategoryView from './components/category/CategoryView.vue'
+import Subject from './components/subject/Subject.vue'
 
 import axios from 'axios'
 import VueRouter from 'vue-router'
@@ -27,8 +28,9 @@ const router = new VueRouter({
     { path: '/login', component: Login },
     { path: '/signup', component: Signup },
     { path: '/category', component: Category},
-    { path: '/category/:id', component: CategoryView},
-    { path: '/category/new', component: AddCategory}
+    { path: '/category/new', component: AddCategory},
+    {path: '/subject', component: Subject},
+    { path: '/category/:id', component: CategoryView}
   ]
 })
 
