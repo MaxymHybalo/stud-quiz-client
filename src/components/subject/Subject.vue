@@ -1,9 +1,8 @@
 <template id="subject-component">
     <div class="panel panel-success">
         <div class="panel-heading">
-            <!-- TODO add highlight and arrow separator-->
             <a class="router-link-active previous-link" v-bind:href="'#/category/' + $route.query.category">{{$route.query.category_name}}</a>
-            <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+            <span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span>
             <strong>{{subject.name}}</strong>
         </div>
         <div class="panel panel-label">

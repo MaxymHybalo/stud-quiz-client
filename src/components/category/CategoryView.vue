@@ -6,26 +6,37 @@
         <div class="panel panel-label">
             <div class="container-fluid" style="padding:1em">
                 <div class="row">
-                    <div class="col-md-6 col-md-offset-3">
-                        <strong>Предмети:</strong>
-                        <div class="list-group">
-                            <a class="list-group-item" v-for="item in subject.subjects" @click="openSubject(item)">{{item.name}}</a>
-                            <router-view></router-view>
+                    <div class="col-md-3">
+                        <list-counter-component
+                            placeholder="Предмет"
+                            label="Додати"
+                            v-on:added='mergeSubject'></list-counter-component>
                         </div>
+                        <div class="col-md-9">
+                            <list-component title="Предмети" v-bind:items='subject.subjects'></list-component>
+                        </div>
+                            <router-view></router-view>
+                    </div>
+                <div class="row">
+                    <div class="btn btn-default col-md-3 col-md-offset-9" @click="testUpdate">
+                        Зберегти
                     </div>
                 </div>
             </div>
-        </div>
+            </div>
     </div>
 </template>
 <script>
     import axios from 'axios'
+    import ListCounterComponent from '../support/ListCounterComponent.vue'
+    import ListComponent from '../support/ListComponent.vue'
 
     export default {
         name: 'category-view',
         data: function(){
             return {
-                subject:{}
+                subject:{},
+                newSubject:[]
             }
         },
         created: function(){
@@ -40,7 +51,21 @@
                     category: this.$route.params.id,
                     name: item.name,
                     category_name: this.subject.name}});
+            },
+            mergeSubject(field){
+                // this.newSubject.push({name:field, pushed:true});
+                this.subject.subjects.push({name:field});
+            },
+            updateSubject(items){
+                this.subject.subjects = items;
+            },
+            testUpdate(){
+                axios.post("category/update",this.subject)
             }
+        },
+        components:{
+            ListCounterComponent,
+            ListComponent
         }
     }
 </script>
