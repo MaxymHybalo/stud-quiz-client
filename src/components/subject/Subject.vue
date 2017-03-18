@@ -2,12 +2,17 @@
     <div class="panel panel-success">
         <div class="panel-heading">
             <!-- TODO add highlight and arrow separator-->
-            {{$route.query.category_name}}
+            <a class="router-link-active previous-link" v-bind:href="'#/category/' + $route.query.category">{{$route.query.category_name}}</a>
+            <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+            <strong>{{subject.name}}</strong>
         </div>
         <div class="panel panel-label">
             <div class="container-fluid" style="padding:1em">
                 <div class="row">
-                    <div class="col-md-6 col-md-offset-3">
+                    <div class="col-md-2">
+                        <button>Додати</button>
+                    </div>
+                    <div class="col-md-6 col-md-offset-2">
                         <strong>Тести:</strong>
                         <div class="list-group">
                             <a class="list-group-item" v-for="item in subject.questionCases">{{item.name}}</a>
@@ -38,3 +43,9 @@
         }
     }
 </script>
+<style>
+    .previous-link{
+        color: #3c763d;
+        /*TODO add hover dependency*/
+    }
+</style>

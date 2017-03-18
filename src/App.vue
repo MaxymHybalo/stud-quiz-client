@@ -44,3 +44,8 @@ export default {
   }
 }
 </script>
+<style media="screen">
+    body {
+        background: url('./assets/paper_3.png');
+    }
+</style>

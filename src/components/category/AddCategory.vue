@@ -12,10 +12,10 @@
                                     <label for="name">Назва</label>
                                     <input type="text" class="form-control" id="name" v-model='name' placeholder="Назва"/>
                                 </div>
-                                <div class="form-group">
-                                    <input type="text" v-if="isSubjectField" v-model="subject"/>
-                                    <button class="btn btn-default" @click="showField">Додати предмет</button>
-                                </div>
+
+                                <!-- ListCounterComponent place! -->
+                                <list-counter-component label="Додати предмет" v-on:added="handleSubjects"></list-counter-component>
+
                                 <ul class="list-group">
                                     <li class="list-group-item" v-for="item in subjects">{{item.name}}</li>
                                 </ul>
@@ -33,6 +33,7 @@
 </template>
 <script>
     import axios from 'axios'
+    import ListCounterComponent from '../support/ListCounterComponent.vue'
 
     export default{
         name:"add-category",
@@ -52,14 +53,13 @@
                                 .catch(error => this.msg = error);
 
             },
-            showField(){
-                this.isSubjectField = !this.isSubjectField;
-                if (!this.isSubjectField && !(this.subjects === '')){
-                    this.subjects.push({name:this.subject});
-                    console.log(this.subjects);
-                }
-                this.subject = '';
+            handleSubjects(field){
+                console.log(field);
+                this.subjects.push({name:field});
             }
+        },
+        components:{
+            ListCounterComponent
         }
     }
 </script>
