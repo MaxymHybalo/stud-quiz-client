@@ -6,7 +6,8 @@
                     <strong>{{title}}:</strong>
                     <div class="list-group">
                         <a class="list-group-item"
-                        v-for="item in items">
+                        v-for="item in items"
+                        @click="builder(item)">
                         {{item.name}}
                     </a>
                 </div>
@@ -27,10 +28,9 @@
 <script>
     export default{
         name: 'list-component',
-        props: ['title', 'items'],
+        props: ['title', 'items', 'builder'],
         methods:{
             popItem(item){
-                // item.pop(item);
                 this.items.splice(this.items.indexOf(item),1);
             }
         }

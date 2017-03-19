@@ -13,12 +13,12 @@
                             v-on:added='mergeSubject'></list-counter-component>
                         </div>
                         <div class="col-md-9">
-                            <list-component title="Предмети" v-bind:items='subject.subjects'></list-component>
+                            <list-component title="Предмети" v-bind:builder='openSubject' v-bind:items='subject.subjects'></list-component>
                         </div>
                             <router-view></router-view>
                     </div>
                 <div class="row">
-                    <div class="btn btn-default col-md-3 col-md-offset-9" @click="testUpdate">
+                    <div class="btn btn-default col-md-3 col-md-offset-8" @click="update">
                         Зберегти
                     </div>
                 </div>
@@ -47,19 +47,18 @@
         methods:{
             openSubject(item){
                 console.log(item.name);
-                this.$router.push({path:'/subject', query: {
+                this.$router.push({path:'/subject/', query: {
                     category: this.$route.params.id,
                     name: item.name,
-                    category_name: this.subject.name}});
+                    categoryName: this.subject.name}});
             },
             mergeSubject(field){
-                // this.newSubject.push({name:field, pushed:true});
                 this.subject.subjects.push({name:field});
             },
             updateSubject(items){
                 this.subject.subjects = items;
             },
-            testUpdate(){
+            update(){
                 axios.post("category/update",this.subject)
             }
         },
