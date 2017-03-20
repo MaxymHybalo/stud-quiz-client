@@ -12,15 +12,12 @@
                                     <label for="name">Назва</label>
                                     <input type="text" class="form-control" id="name" v-model='name' placeholder="Назва"/>
                                 </div>
-
-                                <!-- ListCounterComponent place! -->
                                 <list-counter-component label="Додати предмет" v-on:added="handleSubjects"></list-counter-component>
 
                                 <ul class="list-group">
                                     <li class="list-group-item" v-for="item in subjects">{{item.name}}</li>
                                 </ul>
                             </div>
-
                         </div>
                         <div class="row">
                             <button class="col-md-3 col-md-offset-9  btn btn-info" type="button" @click='save'>Зберегти</button>

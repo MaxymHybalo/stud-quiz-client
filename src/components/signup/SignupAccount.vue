@@ -6,27 +6,24 @@
         <div class="panel panel-label">
             <div class="container-fluid">
                 <form>
-                    <!-- TODO clear cascade .container-fluid, like in AddCategoryComponent -->
-                    <div class="container-fluid">
-                        <div class="row">
-                            <div class="col-md-6 col-md-offset-3">
-                                <div class="form-group">
-                                    <label for="login">Логін</label>
-                                    <input type="text" class="form-control" id="login" v-model='login' placeholder="Логін"/>
-                                </div>
-                                <div class="form-group">
-                                    <label for="email">Електронна пошта</label>
-                                    <input type="email" class="form-control" id="password" v-model='email' placeholder="Емейл"/>
-                                </div>
-                                <div class="form-group">
-                                    <label for="password">Пароль</label>
-                                    <input type="password" class="form-control" id="password" v-model='password' placeholder="Пароль"/>
-                                </div>
+                    <div class="row">
+                        <div class="col-md-6 col-md-offset-3">
+                            <div class="form-group">
+                                <label for="login">Логін</label>
+                                <input type="text" class="form-control" id="login" v-model='login' placeholder="Логін"/>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Електронна пошта</label>
+                                <input type="email" class="form-control" id="password" v-model='email' placeholder="Емейл"/>
+                            </div>
+                            <div class="form-group">
+                                <label for="password">Пароль</label>
+                                <input type="password" class="form-control" id="password" v-model='password' placeholder="Пароль"/>
                             </div>
                         </div>
-                        <div class="row">
-                            <button class="col-md-3 col-md-offset-9  btn btn-info" type="button" @click='next'>Далі</button>
-                        </div>
+                    </div>
+                    <div class="row">
+                        <button class="col-md-3 col-md-offset-9  btn btn-info" type="button" @click='next'>Далі</button>
                     </div>
                 </form>
             </div>
@@ -50,3 +47,8 @@
         }
     }
 </script>
+<style media="screen">
+    form {
+        padding: 1em;
+    }
+</style>

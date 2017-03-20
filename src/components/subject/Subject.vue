@@ -69,6 +69,10 @@
 <style>
     .previous-link{
         color: #3c763d;
-        /*TODO add hover dependency*/
+    }
+    .previous-link:hover {
+        color: #3c763d;
+        text-decoration: none;
+        font-weight: bold;
     }
 </style>
