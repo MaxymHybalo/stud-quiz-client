@@ -16,7 +16,10 @@
                             ></list-counter-component>
                         </div>
                         <div class="col-md-9">
-                            <list-component title="Тести" v-bind:items='subject.questionCases'></list-component>
+                            <list-component
+                            title="Тести"
+                            v-bind:items='subject.questionCases'
+                            :builder="openTest"></list-component>
                         </div>
                             <router-view></router-view>
                     </div>
@@ -42,6 +45,14 @@
             }
         },
         methods:{
+            openTest(item){
+                this.$router.push({
+                    path: '/question/', query:{
+                        before: this.$route.query,
+                        case: item.name
+                    }
+                });
+            },
             mergeTest(field){
                 if (this.subject.questionCases == null) {
                     this.subject.questionCases = [];

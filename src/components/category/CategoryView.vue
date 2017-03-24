@@ -46,7 +46,6 @@
         },
         methods:{
             openSubject(item){
-                console.log(item.name);
                 this.$router.push({path:'/subject/', query: {
                     category: this.$route.params.id,
                     name: item.name,
