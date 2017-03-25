@@ -59,7 +59,7 @@
         data: function(){
             return {
                 count: null,
-                questions: [{}],
+                questions: [{isTruth:false}],
                 condition: null
             }
         },
