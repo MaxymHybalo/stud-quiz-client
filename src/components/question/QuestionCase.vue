@@ -25,9 +25,10 @@
                 </div>
             </div>
         </div>
-        <div class="panel panel-footer">
-            Footer Text
-            <question-case-table></question-case-table>
+        <div class="panel panel-label">
+            <div class="container-fluid">
+                <question-case-table></question-case-table>
+            </div>
         </div>
     </div>
 </template>
