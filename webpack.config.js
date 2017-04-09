@@ -41,11 +41,11 @@ module.exports = {
     historyApiFallback: true,
     noInfo: true,
     watchOptions: { aggregateTimeout: 300, poll: 1000 },
-    headers: {
-      "Access-Control-Allow-Origin": "*",
-      "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, PATCH, OPTIONS",
-      "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Authorization, Accept"
-    }
+    // headers: {
+    //   "Access-Control-Allow-Origin": "*",
+    //   "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, PATCH, OPTIONS",
+    //   "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Authorization, Accept"
+    // }
   },
   performance: {
     hints: false

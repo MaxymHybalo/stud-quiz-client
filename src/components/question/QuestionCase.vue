@@ -21,13 +21,13 @@
                     </div>
                 </div>
                 <div class="row">
-                    <add-question v-if='isAddQForm'></add-question>
+                    <add-question v-if='isAddQForm' v-on:save="switchForm"></add-question>
                 </div>
             </div>
         </div>
         <div class="panel panel-label">
             <div class="container-fluid">
-                <question-case-table></question-case-table>
+                <question-case-table :update="isAddQForm"></question-case-table>
             </div>
         </div>
     </div>
