@@ -1,6 +1,6 @@
 <template id="list-component">
-    <div class="container-fluid">
-        <div class="col-md-10">
+    <div class="">
+        <div class="col-md-12">
             <div class="row">
                 <div class="col-md-10">
                     <strong>{{title}}:</strong>
@@ -13,7 +13,7 @@
                 </div>
             </div>
             <br>
-                <div class="col-md-2">
+                <div class="col-md-2" v-if="remove_item">
                     <div class="list-group">
                         <a class="list-group-item icon"
                         v-for="item in items" @click = 'popItem(item)'>
@@ -28,7 +28,7 @@
 <script>
     export default{
         name: 'list-component',
-        props: ['title', 'items', 'builder'],
+        props: ['title', 'items', 'builder', 'remove_item'],
         methods:{
             popItem(item){
                 this.items.splice(this.items.indexOf(item),1);

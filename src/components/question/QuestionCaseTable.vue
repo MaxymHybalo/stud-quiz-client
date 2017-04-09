@@ -24,7 +24,7 @@
     import axios from 'axios'
 
     export default {
-
+        props: ['update'],
         data: function () {
             return {
                 questions: [{}],
@@ -42,6 +42,9 @@
                     this.questions = response.data;
                     this.maxDomens = searchMaxDomen(this.questions);
             });
+        },
+        computed:{
+            update: function(){this.beforeCreate();}
         }
     }
 

@@ -87,8 +87,7 @@
 
                 axios.post('/question/', {params:
                     params, data: caseProjection});
-
-                console.log(caseProjection);
+                this.$emit('save');
             }
         }
     }
