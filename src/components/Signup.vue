@@ -1,11 +1,13 @@
 <template id="signup">
-    <div class="container-fluid">
+    <div class="">
+
+    <!-- <div class="container-fluid"> -->
         <signup-role v-on:next='applyRole' v-if='isSignupRole'></signup-role>
         <signup-account v-on:next='applyAccount' v-if='isSignupAccount'></signup-account>
         <signup-personal v-on:next='applyPersonal' v-if='isSignupPersonal'></signup-personal>
         <div v-if='isSuccessfulMessage' class="alert alert-success" role="alert" style="text-align: center">{{msg}}</div>
-    </div>
-
+    <!-- </div> -->
+</div>
 </template>
 <script>
     import SignupRole from './signup/SignupRole.vue'

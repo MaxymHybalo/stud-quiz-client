@@ -1,5 +1,5 @@
 <template id="home">
-    <div class="container-fluid">
+    <div class="">
         <div class="col-md-3">
             <list-component
             title="Категорія"

@@ -1,12 +1,10 @@
 <template>
     <div id="app">
         <head-bar-component></head-bar-component>
-        <div class="container">
+        <div class="container-fluid">
             <div class="row">
-                    <div class="col-md-10 col-md-offset-1">
-                        <router-link to="/category">Редактор</router-link>
-                    <router-view></router-view>
-                </div>
+                <router-link to="/category">Редактор</router-link>
+                <router-view></router-view>
             </div>
         </div>
     </div>
