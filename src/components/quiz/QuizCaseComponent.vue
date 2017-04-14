@@ -6,7 +6,7 @@
             <label>{{key}}</label>
         </div>
         <div class="row">
-            <div class="col-md-3 col-md-offset-1 btn btn-default">
+            <div class="col-md-3 col-md-offset-1 btn btn-default" @click='before'>
                 Попередній
             </div>
             <div class="col-md-3 col-md-offset-3  btn btn-primary" @click='next'>
@@ -20,7 +20,11 @@
         props:['condition', 'options'],
         methods:{
             next(){
+                //Put some logic for handling results
                 this.$emit('next');
+            },
+            before(){
+                this.$emit('before');
             }
         }
     }

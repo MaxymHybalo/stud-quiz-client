@@ -3,13 +3,14 @@
     class="col-md-8 mocked">
         <div class="panel panel-success">
             <div class="panel-heading">
-                {{quiz.name}}
+                Питання {{currentIndex+1}} з {{ maxIndexes }}
             </div>
             <div class="panel-body">
                 <quiz-case-component
-                 :condition='quiz.questions[0].condition'
-                 :options='quiz.questions[0].options'
-                 @next='iterateQuestion'/>
+                 :condition='condition'
+                 :options='options'
+                 @next='iterateQuestion'
+                 @before='beforeQuestion'/>
             </div>
         </div>
     </div>
@@ -20,22 +21,45 @@
         props: ['quiz'],
         data: function(){
             return {
-
+                currentIndex: 0,
+                maxIndexes: 0,
+                condition: null,
+                options: null
             }
         },
         methods:{
             iterateQuestion(){
-                //Add logic for iterate question, and save quiz flow
+                if(this.currentIndex != this.maxIndexes){
+                    this.currentIndex ++;
+                }
+                this.condition = conditionByIndex(this.currentIndex, this.quiz);
+                this.options = optionsByIndex(this.currentIndex, this.quiz);
                 console.log("Catched emited method");
+            },
+            beforeQuestion(){
+                if(this.currentIndex != 0){
+                    this.currentIndex--;
+                }
+                this.condition = conditionByIndex(this.currentIndex, this.quiz);
+                this.options = optionsByIndex(this.currentIndex, this.quiz);
             }
+        },
+        created:function(){
+            this.condition = conditionByIndex(this.currentIndex, this.quiz);
+            this.options = optionsByIndex(this.currentIndex, this.quiz);
+            this.maxIndexes = this.quiz.questions.length;
+            console.log(this.$router.query);
         },
         components:{
             QuizCaseComponent
         }
     }
+
+    function conditionByIndex(index, collection){
+        return collection.questions[index].condition;
+    }
+
+    function optionsByIndex(index, collection){
+        return collection.questions[index].options;
+    }
 </script>
-<style media="screen">
-    /*div.mocked {
-        background-color: red;
-    }*/
-</style>
