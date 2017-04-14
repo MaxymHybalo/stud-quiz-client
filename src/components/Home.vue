@@ -19,8 +19,9 @@
         <div class="col-md-5" v-if="questions">
             <list-component
             title="Тести"
-            v-bind:items="questions.questionCases"
+            :items="questions.questionCases"
             :remove_item="false"
+            :builder="questionAction"
             />
         </div>
     </div>
@@ -49,6 +50,16 @@
             subjectAction(item){
                 console.log("Emit subject " + item.name);
                 this.questions = getQuery("/subject/", {category: this.selectedCategory.id, name: item.name}).then(response => this.questions = response.data);
+                console.log(this.questions);
+            },
+            questionAction(item){
+                //push to new vue
+                console.log("Question action call " + item);
+                this.$router.push({
+                    path: '/quiz',
+                    query: item
+                })
+
             }
         },
         created:function() {

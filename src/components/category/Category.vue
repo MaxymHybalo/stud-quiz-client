@@ -3,8 +3,10 @@
     <div class="container-fluid">
         <!-- TODO Needed some solution for different user roles -->
         <!-- <router-link to="/category/new">Нова категорія</router-link> -->
-        <category-list></category-list>
-        <router-view></router-view>
+        <div class="col-md-10 col-md-offset-1">
+            <category-list></category-list>
+            <router-view></router-view>
+        </div>
     </div>
 </template>
 <script>

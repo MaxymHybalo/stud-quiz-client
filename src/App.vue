@@ -3,8 +3,10 @@
         <head-bar-component></head-bar-component>
         <div class="container-fluid">
             <div class="row">
-                <router-link to="/category">Редактор</router-link>
-                <router-view></router-view>
+                <div class="col-md-10 col-md-offset-1">
+                    <router-link to="/category">Редактор</router-link>
+                    <router-view></router-view>
+                </div>
             </div>
         </div>
     </div>
