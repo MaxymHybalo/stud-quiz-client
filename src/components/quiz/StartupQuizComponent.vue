@@ -1,7 +1,7 @@
 <template id="startup-quiz-component">
     <div class="panel panel-primary">
         <div class="panel-heading">
-            {{ $route.query.name }}
+            {{ $route.query[0].name }}
         </div>
         <div class="panel-body">
             <div

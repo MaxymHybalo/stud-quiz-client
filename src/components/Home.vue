@@ -35,6 +35,7 @@
                     categories:[],
                     category:null,
                     selectedCategory:null,
+                    selectedSubject:null,
                     questions:null,
                     isHomeView: true
                 }
@@ -50,6 +51,7 @@
             subjectAction(item){
                 console.log("Emit subject " + item.name);
                 this.questions = getQuery("/subject/", {category: this.selectedCategory.id, name: item.name}).then(response => this.questions = response.data);
+                this.selectedSubject = item.name;
                 console.log(this.questions);
             },
             questionAction(item){
@@ -57,7 +59,7 @@
                 console.log("Question action call " + item);
                 this.$router.push({
                     path: '/quiz',
-                    query: item
+                    query: [item, this.selectedCategory.id, this.selectedSubject]
                 })
 
             }

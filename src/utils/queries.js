@@ -14,4 +14,8 @@ function getQuery(query, params){
     return axios.get(query);
 }
 
-export {getCategoriesNames, getQuery}
+function postQuery(query, data){
+    return axios.post(query, data);
+}
+
+export {getCategoriesNames, getQuery, postQuery}

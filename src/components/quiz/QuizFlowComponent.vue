@@ -12,12 +12,20 @@
                  :options='options'
                  @next='iterateQuestion'
                  @before='beforeQuestion'/>
+
+                 <quiz-finish-component
+                 v-if="endpoint"
+                 msg="Проходження тесту завершено"
+                 @finish="finishQuiz"/>
             </div>
         </div>
     </div>
 </template>
 <script>
     import QuizCaseComponent from './QuizCaseComponent.vue'
+    import QuizFinishComponent from './QuizFinishComponent.vue'
+    import { postQuery } from '../../utils/queries.js'
+
     var quizResultMap = {};
     export default {
         props: ['quiz'],
@@ -35,8 +43,8 @@
                 quizResultMap[this.currentIndex] = values;
                 if(this.currentIndex != this.maxIndexes - 1){
                     this.currentIndex ++;
-                    this.condition = conditionByIndex(this.currentIndex, this.quiz);
-                    this.options = optionsByIndex(this.currentIndex, this.quiz);
+                    this.condition = conditionByIndex(this.currentIndex, this.quiz[0]);
+                    this.options = optionsByIndex(this.currentIndex, this.quiz[0]);
                 }
 
                 if (Object.keys(quizResultMap).length == this.maxIndexes) {
@@ -48,19 +56,28 @@
                 if(this.currentIndex != 0){
                     this.currentIndex--;
                 }
-                this.condition = conditionByIndex(this.currentIndex, this.quiz);
-                this.options = optionsByIndex(this.currentIndex, this.quiz);
+                this.condition = conditionByIndex(this.currentIndex, this.quiz[0]);
+                this.options = optionsByIndex(this.currentIndex, this.quiz[0]);
+            },
+            finishQuiz(){
+                // console.log(quizResultMap);
+                let params = {}
+                params['category'] = this.quiz[1];
+                params['name'] = this.quiz[2];
+                params['questionCase'] = this.quiz[0].name;
+                postQuery("/foo", {params: params, data: quizResultMap});
             }
         },
         created:function(){
-            this.condition = conditionByIndex(this.currentIndex, this.quiz);
-            this.options = optionsByIndex(this.currentIndex, this.quiz);
-            this.maxIndexes = this.quiz.questions.length;
+            this.condition = conditionByIndex(this.currentIndex, this.quiz[0]);
+            this.options = optionsByIndex(this.currentIndex, this.quiz[0]);
+            this.maxIndexes = this.quiz[0].questions.length;
             quizResultMap = {};
             console.log("After re-creating component", quizResultMap);
         },
         components:{
-            QuizCaseComponent
+            QuizCaseComponent,
+            QuizFinishComponent
         }
     }
 
