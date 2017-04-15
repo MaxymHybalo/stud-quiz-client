@@ -7,6 +7,7 @@
             </div>
             <div class="panel-body">
                 <quiz-case-component
+                v-if="!endpoint"
                  :condition='condition'
                  :options='options'
                  @next='iterateQuestion'
@@ -17,6 +18,7 @@
 </template>
 <script>
     import QuizCaseComponent from './QuizCaseComponent.vue'
+    var quizResultMap = {};
     export default {
         props: ['quiz'],
         data: function(){
@@ -24,17 +26,23 @@
                 currentIndex: 0,
                 maxIndexes: 0,
                 condition: null,
-                options: null
+                options: null,
+                endpoint: false
             }
         },
         methods:{
-            iterateQuestion(){
-                if(this.currentIndex != this.maxIndexes){
+            iterateQuestion(values){
+                quizResultMap[this.currentIndex] = values;
+                if(this.currentIndex != this.maxIndexes - 1){
                     this.currentIndex ++;
+                    this.condition = conditionByIndex(this.currentIndex, this.quiz);
+                    this.options = optionsByIndex(this.currentIndex, this.quiz);
                 }
-                this.condition = conditionByIndex(this.currentIndex, this.quiz);
-                this.options = optionsByIndex(this.currentIndex, this.quiz);
-                console.log("Catched emited method");
+
+                if (Object.keys(quizResultMap).length == this.maxIndexes) {
+                    console.log("endpoint status changed", quizResultMap);
+                    this.endpoint = true;
+                }
             },
             beforeQuestion(){
                 if(this.currentIndex != 0){
@@ -48,7 +56,8 @@
             this.condition = conditionByIndex(this.currentIndex, this.quiz);
             this.options = optionsByIndex(this.currentIndex, this.quiz);
             this.maxIndexes = this.quiz.questions.length;
-            console.log(this.$router.query);
+            quizResultMap = {};
+            console.log("After re-creating component", quizResultMap);
         },
         components:{
             QuizCaseComponent
