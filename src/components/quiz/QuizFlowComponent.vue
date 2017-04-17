@@ -16,6 +16,7 @@
                  <quiz-finish-component
                  v-if="endpoint"
                  msg="Проходження тесту завершено"
+                 :results="quizResults"
                  @finish="finishQuiz"/>
             </div>
         </div>
@@ -35,7 +36,8 @@
                 maxIndexes: 0,
                 condition: null,
                 options: null,
-                endpoint: false
+                endpoint: false,
+                quizResults: null
             }
         },
         methods:{
@@ -65,7 +67,9 @@
                 params['category'] = this.quiz[1];
                 params['name'] = this.quiz[2];
                 params['questionCase'] = this.quiz[0].name;
-                postQuery("/foo", {params: params, data: quizResultMap});
+                this.quizResults = postQuery('/quiz/results', {params: params, data: quizResultMap})
+                                    .then(response => this.quizResults = response.data);
+
             }
         },
         created:function(){
