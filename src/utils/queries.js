@@ -14,8 +14,11 @@ function getQuery(query, params){
     return axios.get(query);
 }
 
+function getAuthorizedQuery(query, auth, params){
+    return axios.get(query, {headers: {'Authorization': 'Basic ' + auth}, {prams: 'Loool!'}});
+}
 function postQuery(query, data){
     return axios.post(query, data);
 }
 
-export {getCategoriesNames, getQuery, postQuery}
+export {getCategoriesNames, getQuery, postQuery, getAuthorizedQuery}

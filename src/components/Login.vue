@@ -25,7 +25,7 @@
                     </div>
                 </form>
             </div>
-            <p>{{ip}}</p>
+            <p style="display:none">{{status}}</p>
         </div>
     </div>
 </template>
@@ -38,7 +38,7 @@ import axios from 'axios'
             return{
                 login: null,
                 password: null,
-                ip: "$store.state.ip"
+                status: null
             }
         },
 
@@ -46,11 +46,16 @@ import axios from 'axios'
             //Sign in function works correct
             //TODO handle wrong
             signIn(){
-                console.log('Passed', this.login, this.password);
-                this.ip = axios.get('question/all', { headers: {'Authorization': 'Basic ' + btoa(this.login + ":" + this.password)}})
-                    .then(response => this.ip = response.data)
+                let token = btoa(this.login + ":" + this.password);
+                this.status = axios.post('/login', { headers: {'Authorization': 'Basic ' + token}})
+                    .then(response =>{
+                            if(response.data == 'OK'){
+                                this.$store.commit('AUTH_DATA', token),
+                                this.$router.push('/profile');
+                            }
+                    })
                     .catch(error => {
-                        this.ip = error;
+                        this.status = error;
                         this.$store.commit('change', error);
             })
         }

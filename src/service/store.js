@@ -12,10 +12,13 @@ const SET_PERSONAL = 'SET_PERSONAL';
 
 const _SUBMITED = 'SUBMITED';
 
+const AUTH_DATA = 'AUTH_DATA';
+
 export default new Vuex.Store({
     state:{
         ip: "null",
-        user: {}
+        user: {},
+        token: null
     },
     mutations:{
         [SET_ROLE](state,role){
@@ -33,14 +36,20 @@ export default new Vuex.Store({
             state.user.sex = values[3];
             state.user.phone = values[4];
         },
+        [AUTH_DATA](state, values){
+            state.token = values;
+        },
         [_SUBMITED](state, message){
             state.message = message;
         }
-
     },
     getters:{
         getUser: state => {
             return JSON.stringify(state.user);
+        },
+
+        getAuth: state => {
+            return state.token;
         }
     }
 
