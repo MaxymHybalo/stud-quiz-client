@@ -15,7 +15,11 @@ function getQuery(query, params){
 }
 
 function getAuthorizedQuery(query, auth, params){
-    return axios.get(query, {headers: {'Authorization': 'Basic ' + auth}, {prams: 'Loool!'}});
+    return axios.get(query, {
+        headers:
+            {'Authorization': 'Basic ' + auth},
+        params: params
+        });
 }
 function postQuery(query, data){
     return axios.post(query, data);

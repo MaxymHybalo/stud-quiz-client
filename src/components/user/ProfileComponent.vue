@@ -18,7 +18,12 @@
         },
         created: function(){
             console.log('In profie creation flow ', this.$store.getters.getAuth);
-            this.profile = getAuthorizedQuery('/profile', this.$store.getters.getAuth).then(response => this.profile = response.data);
+            this.profile = getAuthorizedQuery('/profile', this.$store.getters.getAuth).then(response =>
+                {
+                    this.profile = response.data;
+                    this.$store.commit('SET_PROFILE', response.data);
+                    console.log(this.$store.getters.getProfile);
+                });
         }
     }
 </script>

@@ -14,11 +14,14 @@ const _SUBMITED = 'SUBMITED';
 
 const AUTH_DATA = 'AUTH_DATA';
 
+const SET_PROFILE = 'SET_PROFILE';
+
 export default new Vuex.Store({
     state:{
         ip: "null",
         user: {},
-        token: null
+        token: null,
+        profile: null
     },
     mutations:{
         [SET_ROLE](state,role){
@@ -41,6 +44,9 @@ export default new Vuex.Store({
         },
         [_SUBMITED](state, message){
             state.message = message;
+        },
+        [SET_PROFILE](state, value){
+            state.profile = value;
         }
     },
     getters:{
@@ -50,6 +56,9 @@ export default new Vuex.Store({
 
         getAuth: state => {
             return state.token;
+        },
+        getProfile: state =>{
+            return state.profile;
         }
     }
 
