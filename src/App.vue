@@ -12,7 +12,7 @@
     </div>
 </template>
 <script>
-import HeadBarComponent from './components/HeadBarComponent.vue'
+import HeadBarComponent from './components/header/HeadBarComponent.vue'
 
 export default {
   name: 'app',
