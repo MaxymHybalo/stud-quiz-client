@@ -67,7 +67,8 @@
                 params['category'] = this.quiz[1];
                 params['name'] = this.quiz[2];
                 params['questionCase'] = this.quiz[0].name;
-                this.quizResults = postQuery('/quiz/results', {params: params, data: quizResultMap})
+                console.log(this.$store.getters.getProfile);
+                this.quizResults = postQuery('/quiz/results', {params: params, data: quizResultMap, user: this.$store.getters.getProfile.id})
                                     .then(response => this.quizResults = response.data);
 
             }

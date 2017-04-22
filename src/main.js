@@ -9,6 +9,7 @@ import CategoryView from './components/category/CategoryView.vue'
 import Subject from './components/subject/Subject.vue'
 import QuestionCase from './components/question/QuestionCase.vue'
 import StartupQuizComponent from './components/quiz/StartupQuizComponent.vue'
+import ProfileComponent from './components/user/ProfileComponent.vue'
 
 import axios from 'axios'
 import VueRouter from 'vue-router'
@@ -34,7 +35,8 @@ const router = new VueRouter({
     { path: '/subject', component: Subject},
     { path: '/question', component: QuestionCase},
     { path: '/category/:id', component: CategoryView},
-    { path: '/quiz', component: StartupQuizComponent}
+    { path: '/quiz', component: StartupQuizComponent},
+    { path: '/profile', component: ProfileComponent}
   ]
 })
 
