@@ -1,15 +1,27 @@
 <template id="ProfileComponent">
     <div class="panel panel-primary">
         <div class="panel-heading">
-            Users profile
+            Профіль {{ profile.role }}
         </div>
         <div class="panel-body">
-            <h3>{{profile}}</h3>
+            <!-- Candidate to  -->
+            <div class="row">
+
+                <div class="col-md-3">
+                    <profile-menu-component/>
+                </div>
+                <div class="col-md-9">
+                    <profile-represend-component :profile='profile'/>
+                </div>
+            </div>
         </div>
     </div>
 </template>
 <script>
     import { getQuery, getAuthorizedQuery } from '../../utils/queries.js'
+    import ProfileRepresendComponent from './ProfileRepresendComponent.vue'
+    import ProfileMenuComponent from './ProfileMenuComponent.vue'
+
     export default {
         data: function () {
             return{
@@ -24,6 +36,10 @@
                     this.$store.commit('SET_PROFILE', response.data);
                     console.log(this.$store.getters.getProfile);
                 });
+        },
+        components:{
+            ProfileRepresendComponent,
+            ProfileMenuComponent
         }
     }
 </script>
