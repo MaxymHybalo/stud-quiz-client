@@ -17,19 +17,29 @@
             <div class="collapse navbar-collapse" v-else >
                 <ul class="nav navbar-nav navbar-right">
                     <li>
-                        <router-link to="/profile">
-                            <span class="glyphicon glyphicon-user" aria-hidden="true"></span>{{$store.getters.getProfile.first}}
+                        <router-link to="/profile/user">
+                            <span class="glyphicon glyphicon-user" aria-hidden="true"></span> {{$store.getters.getProfile.first}}
                         </router-link>
                     </li>
-                    <!-- <li class="dropdown">
-                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
-                         <ul class="dropdown-menu">
-                           <li><a href="#">Action</a></li>
-                           <li><a href="#">Another action</a></li>
-                         </ul>
-                    </li> -->
+                    <li>
+                        <a @click="logout">
+                            <span class="glyphicon glyphicon-log-out" aria-hidden="true"></span> Вийти
+                        </a>
+                    </li>
+
                 </ul>
             </div>
         </div>
     </nav>
 </template>
+<script>
+    export default {
+        methods:{
+            logout(){
+                this.$store.commit("AUTH_DATA", null);
+                this.$store.commit("SET_PROFILE", null);
+                this.$router.push("/");
+            }
+        }
+    }
+</script>
