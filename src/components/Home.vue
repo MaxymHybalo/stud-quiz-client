@@ -1,5 +1,5 @@
 <template id="home">
-    <div class="">
+    <div class="row">
         <div class="col-md-3">
             <list-component
             title="Категорія"

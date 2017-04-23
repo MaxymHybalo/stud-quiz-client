@@ -1,9 +1,9 @@
 <template id="profile-menu-component">
     <ul class="nav nav-pills nav-stacked">
-        <li role="presentation"><a>Групи</a></li>
-        <li role="presentation"><a>Профіль</a></li>
-        <li role="presentation"><a>Учні</a></li>
-        <li role="presentation"><a>Статистика</a></li>
-        <li role="presentation"><a>Тести</a></li>
+        <li role="presentation"><router-link to="/profile/user">Профіль</router-link></li>
+        <li role="presentation"><router-link to="/profile">Групи</router-link></li>
+        <li role="presentation"><router-link to="">Учні</router-link></li>
+        <li role="presentation"><router-link to="">Статистика</router-link></li>
+        <li role="presentation"><router-link to="/profile/quiz">Тести</router-link></li>
     </ul>
 </template>

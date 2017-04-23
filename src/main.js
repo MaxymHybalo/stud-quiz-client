@@ -10,6 +10,7 @@ import Subject from './components/subject/Subject.vue'
 import QuestionCase from './components/question/QuestionCase.vue'
 import StartupQuizComponent from './components/quiz/StartupQuizComponent.vue'
 import ProfileComponent from './components/user/ProfileComponent.vue'
+import ProfileRepresendComponent from './components/user/ProfileRepresendComponent.vue'
 
 import axios from 'axios'
 import VueRouter from 'vue-router'
@@ -36,7 +37,13 @@ const router = new VueRouter({
     { path: '/question', component: QuestionCase},
     { path: '/category/:id', component: CategoryView},
     { path: '/quiz', component: StartupQuizComponent},
-    { path: '/profile', component: ProfileComponent}
+    { path: '/profile', component: ProfileComponent,
+      children: [
+          { path: 'user', component: ProfileRepresendComponent},
+          { path: 'quiz', component: Home}
+
+      ]
+    }
   ]
 })
 
