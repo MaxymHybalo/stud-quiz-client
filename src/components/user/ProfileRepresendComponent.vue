@@ -25,8 +25,22 @@
     </table>
 </template>
 <script>
+    import { getQuery, getAuthorizedQuery } from '../../utils/queries.js'
     export default {
-        props:['profile'],
+        data: function () {
+            return{
+                profile:null
+            }
+        },
+        created: function(){
+            console.log('In profie creation flow ', this.$store.getters.getAuth);
+            this.profile = getAuthorizedQuery('/profile', this.$store.getters.getAuth).then(response =>
+                {
+                    this.profile = response.data;
+                    this.$store.commit('SET_PROFILE', response.data);
+                    console.log(this.$store.getters.getProfile);
+                });
+        },
         computed:{
             fullName: function(){
                 return this.profile.last + ' ' + this.profile.first + ' ' + this.profile.middle;

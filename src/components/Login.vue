@@ -51,7 +51,7 @@ import axios from 'axios'
                     .then(response =>{
                             if(response.data == 'OK'){
                                 this.$store.commit('AUTH_DATA', token),
-                                this.$router.push('/profile');
+                                this.$router.push('/profile/user');
                             }
                     })
                     .catch(error => {
