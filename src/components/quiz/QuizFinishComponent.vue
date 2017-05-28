@@ -4,7 +4,7 @@
             {{msg}}
         </h1>
         <h1 class="col-md-offset-1" v-else>
-            {{results.gradation}}!
+            {{results.gradation + '!'}}
         </h1>
         <div
         v-if="!results"
