@@ -1,6 +1,6 @@
 <template id="admin-category-panel">
     <div class="">
-        <div class="row">
+        <div class="row" v-if="permited">
             <div class="col-md-3 btn btn-primary">
                 <router-link to="/profile/category">Редактор</router-link>
             </div>
@@ -15,6 +15,16 @@
     export default {
         components:{
             Home
+        },
+        data: function(){
+            return{
+                role: this.$store.getters.getProfile.role
+            }
+        },
+        computed:{
+            permited: function(){
+                return this.role == 'TEACHER' || this.role == 'ADMIN';
+            }
         }
     }
 </script>
