@@ -16,9 +16,9 @@
             }
         },
         created: function(){
-            let role =  this.$store.getters.getProfile.role
+            let role = this.$store.getters.getProfile.role;
             this.teacherPermission = role === "TEACHER";
-            this.parentsPermission = role === "PARENTS";
+            this.parentsPermission = role === "PARENT";
         },
         computed:{
             doublePermission: function(){

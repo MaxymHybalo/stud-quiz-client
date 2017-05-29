@@ -18,7 +18,6 @@ const SET_PROFILE = 'SET_PROFILE';
 
 export default new Vuex.Store({
     state:{
-        ip: "null",
         user: {},
         token: null,
         profile: null
