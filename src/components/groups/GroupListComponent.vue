@@ -2,16 +2,7 @@
 	<div class="container-fluid">
 		<div class="row">
 			<div class="col-md-6">
-				<div
-				class="btn btn-default glyphicon glyphicon-plus"
-				style="margin-left: 20px"
-				@click="showGroupForm"></div>
-					<div v-if="triggered" style="margin: 20px 20px 20px 20px" class="input-group">
-						<input class="form-control" type="text" v-model="groupName"/>
-						<span class="input-group-addon" @click="postGroup">
-							<a class="glyphicon glyphicon-ok"></a>
-						</span>
-					</div>
+				<new-group-component @refresh="refresh()"/>
 				<list-component title="Групи" :items="items" :builder="replaceStudentsList"/>
 			</div>
 			<div class="col-md-6">
@@ -23,6 +14,8 @@
 <script type="text/javascript">
     import { getAuthorizedQuery, postAuthorizedQuery } from '../../utils/queries.js'
     import ListComponent from '../support/ListComponent.vue'
+	import NewGroupComponent from './NewGroupComponent.vue'
+
 	export default {
 		data: function () {
 			return {
@@ -33,34 +26,24 @@
 			}
 		},
 		created: function(){
-			this.items = getAuthorizedQuery("/group",this.$store.getters.getAuth)
-				.then(response => this.items = response.data)
-				.catch();
+			this.getGroups();
 		},
 		methods:{
 			replaceStudentsList: function(item){
-				console.log(item);
-				//TODO for existing students build serialized to component object
-				// let buffer = ite
 				this.students = item.studentIds;
 			},
-			showGroupForm(){
-				this.triggered = !this.triggered;
-				this.groupName = "";
+			getGroups(){
+				this.items = getAuthorizedQuery("/group",this.$store.getters.getAuth)
+					.then(response => this.items = response.data)
+					.catch();
 			},
-			postGroup(){
-				console.log("Logger");
-				if (this.triggered) {
-					//logic for post
-					postAuthorizedQuery("/group", this.$store.getters.getAuth, {name: this.groupName})
-						.then(response => console.log(response.data))
-						.catch();
-					this.triggered = !this.triggered;
-				}
+			refresh(){
+				this.items = this.getGroups();
 			}
 		},
 		components:{
-			ListComponent
+			ListComponent,
+			NewGroupComponent
 		}
 	}
 
