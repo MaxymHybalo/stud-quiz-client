@@ -12,7 +12,7 @@ import StartupQuizComponent from './components/quiz/StartupQuizComponent.vue'
 import ProfileComponent from './components/user/ProfileComponent.vue'
 import ProfileRepresendComponent from './components/user/ProfileRepresendComponent.vue'
 import AdminCategoryPanel from './components/category/AdminCategoryPanel.vue'
-
+import GroupListComponent from './components/groups/GroupListComponent.vue'
 
 import axios from 'axios'
 import VueRouter from 'vue-router'
@@ -43,7 +43,8 @@ const router = new VueRouter({
       children: [
           { path: 'user', component: ProfileRepresendComponent},
           { path: 'quiz', component: AdminCategoryPanel},
-          { path: 'category', component: Category}
+          { path: 'category', component: Category},
+          { path: 'groups', component: GroupListComponent}
 
       ]
     }

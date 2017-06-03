@@ -25,4 +25,11 @@ function postQuery(query, data){
     return axios.post(query, data);
 }
 
-export {getCategoriesNames, getQuery, postQuery, getAuthorizedQuery}
+function postAuthorizedQuery(query, auth, data){
+  let ax = axios.create();
+  ax.defaults.headers.post["Authorization"] = "Basic " + auth;
+  return ax.post(query, data);
+
+}
+
+export {getCategoriesNames, getQuery, postQuery, getAuthorizedQuery, postAuthorizedQuery}
