@@ -2,7 +2,7 @@
     <ul class="nav nav-pills nav-stacked">
         <li role="presentation"><router-link to="/profile/user">Профіль</router-link></li>
         <li role="presentation" v-if="teacherPermission"><router-link to="/profile/groups">Групи</router-link></li>
-        <li role="presentation" v-if="teacherPermission"><router-link to="">Учні</router-link></li>
+        <li role="presentation" v-if="teacherPermission"><router-link to="/profile/students">Учні</router-link></li>
         <li role="presentation" v-if="doublePermission"><router-link to="">Статистика</router-link></li>
         <li role="presentation"><router-link to="/profile/quiz">Тести</router-link></li>
     </ul>
