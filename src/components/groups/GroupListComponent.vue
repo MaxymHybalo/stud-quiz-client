@@ -5,8 +5,9 @@
 				<new-group-component @refresh="refresh()"/>
 				<list-component title="Групи" :items="items" :builder="replaceStudentsList"/>
 			</div>
-			<div class="col-md-6">
-				<list-component title="Учні" :items="students"/>
+			<div class="col-md-6" v-if="selected">
+				<new-student-component :group="selected"/>
+				<list-component :title="'Учні ' + selected.name" :items="students"/>
 			</div>
 		</div>
 	</div>
@@ -15,11 +16,13 @@
     import { getAuthorizedQuery, postAuthorizedQuery } from '../../utils/queries.js'
     import ListComponent from '../support/ListComponent.vue'
 	import NewGroupComponent from './NewGroupComponent.vue'
+	import NewStudentComponent from '../user/NewStudentComponent.vue'
 
 	export default {
 		data: function () {
 			return {
 				items: null,
+				selected: null,
 				students: null,
 				groupName: "",
 				triggered: false
@@ -30,7 +33,12 @@
 		},
 		methods:{
 			replaceStudentsList: function(item){
-				this.students = item.studentIds;
+				// this.students = item.studentIds;
+				console.log("Here I can call for user names");
+				this.students = getAuthorizedQuery("/group/students/" + item.id + "/", this.$store.getters.getAuth)
+					.then(response => this.students = response.data)
+					.catch() // one more unhandled exception
+				this.selected = item;
 			},
 			getGroups(){
 				this.items = getAuthorizedQuery("/group",this.$store.getters.getAuth)
@@ -43,7 +51,8 @@
 		},
 		components:{
 			ListComponent,
-			NewGroupComponent
+			NewGroupComponent,
+			NewStudentComponent
 		}
 	}
 
