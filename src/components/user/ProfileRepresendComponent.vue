@@ -43,7 +43,10 @@
         },
         computed:{
             fullName: function(){
-                return this.profile.last + ' ' + this.profile.first + ' ' + this.profile.middle;
+                if(this.profile.middle != null){
+                    return this.profile.last + ' ' + this.profile.first + ' ' + this.profile.middle;
+                }
+            return this.profile.last + ' ' + this.profile.first
             }
         }
     }
