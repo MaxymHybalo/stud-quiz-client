@@ -1,20 +1,15 @@
 <template id="new-student-component">
-    <div class="">
+    <div>
         <div
         class="btn btn-default glyphicon glyphicon-plus"
         style="margin-left: 20px"
         @click="showStudentForm"></div>
             <div v-if="triggered" style="margin: 20px 20px 20px 20px">
-                <!-- <input class="form-control" type="text" v-model=""/> -->
                 <div class="form-group">
-                    <!-- <label>Name</label> -->
                     <input class="form-control" placeholder="Прізвище" type="text" v-model="last"/>
                 </div>
                 <div class="form-group">
                     <input class="form-control" placeholder="Ім'я" type="text" v-model="first"/>
-                </div>
-                <div class="form-group">
-                    <input class="form-control" placeholder="По-батькові" type="text" v-model="middle"/>
                 </div>
                 <span class="" @click="postStudent">
                     <a class="glyphicon glyphicon-ok"></a>
@@ -32,7 +27,6 @@
             return {
                 triggered: false,
                 last: "",
-                middle: "",
                 first: ""
             }
         },
@@ -40,7 +34,6 @@
             showStudentForm(){
                 this.first = "";
                 this.last = "";
-                this.middle = "";
                 this.triggered = !this.triggered;
             },
             postStudent(){
@@ -48,8 +41,7 @@
                     console.log(this.group);
                     let student = {
                         first: this.first,
-                        last: this.last,
-                        middle: this.middle
+                        last: this.last
                     }
                     // ... post logic
                     postAuthorizedQuery("/user/student", this.$store.getters.getAuth, {user:student, group:this.group})

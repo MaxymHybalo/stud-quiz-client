@@ -28,6 +28,7 @@
     import { postQuery } from '../../utils/queries.js'
 
     var quizResultMap = {};
+    var CALCULATION = "Перевірка..."
     export default {
         props: ['quiz'],
         data: function(){
@@ -37,7 +38,7 @@
                 condition: null,
                 options: null,
                 endpoint: false,
-                quizResults: null
+                quizResults: CALCULATION
             }
         },
         methods:{
@@ -73,7 +74,7 @@
                     id = this.$store.getters.getProfile.id;
                 }
                 this.quizResults = postQuery('/quiz/results', {params: params, data: quizResultMap, user: id})
-                                    .then(response => this.quizResults = response.data);
+                                    .then(response => this.quizResults = response.data.gradation);
 
             }
         },
@@ -81,6 +82,7 @@
             this.condition = conditionByIndex(this.currentIndex, this.quiz[0]);
             this.options = optionsByIndex(this.currentIndex, this.quiz[0]);
             this.maxIndexes = this.quiz[0].questions.length;
+            this.quizResults = CALCULATION;
             quizResultMap = {};
             console.log("After re-creating component", quizResultMap);
         },
