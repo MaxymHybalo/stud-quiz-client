@@ -39,4 +39,7 @@
     div .col-md-2 {
         margin-left: -2.3em;
     }
+    a {
+        cursor: pointer;
+    }
 </style>

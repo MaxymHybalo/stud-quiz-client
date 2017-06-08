@@ -16,6 +16,8 @@ const AUTH_DATA = 'AUTH_DATA';
 
 const SET_PROFILE = 'SET_PROFILE';
 
+const SET_USER = 'SET_USER';
+
 export default new Vuex.Store({
     state:{
         user: {},
@@ -46,6 +48,9 @@ export default new Vuex.Store({
         },
         [SET_PROFILE](state, value){
             state.profile = value;
+        },
+        [SET_USER](state, value){
+            state.user = value;
         }
     },
     getters:{
@@ -58,7 +63,8 @@ export default new Vuex.Store({
         },
         getProfile: state =>{
             return state.profile;
-        }
+        },
+        user: state =>{ return state.user;}
     }
 
 });

@@ -7,7 +7,7 @@
 			</div>
 			<div class="col-md-6" v-if="selected">
 				<new-student-component :group="selected"/>
-				<list-component :title="'Учні ' + selected.name" :items="students"/>
+				<list-component :title="'Учні ' + selected.name" :items="students" :builder="pushDetails"/>
 			</div>
 		</div>
 	</div>
@@ -34,7 +34,6 @@
 		methods:{
 			replaceStudentsList: function(item){
 				// this.students = item.studentIds;
-				console.log("Here I can call for user names");
 				this.students = getAuthorizedQuery("/group/students/" + item.id + "/", this.$store.getters.getAuth)
 					.then(response => this.students = response.data)
 					.catch() // one more unhandled exception
@@ -47,6 +46,12 @@
 			},
 			refresh(){
 				this.items = this.getGroups();
+			},
+			pushDetails: function(item){
+				console.log("Students list: ", item);
+				this.$store.commit('SET_USER', item);
+				this.$router.push({name: "details", params:{id:item.id}});
+				//push logic
 			}
 		},
 		components:{

@@ -14,6 +14,7 @@ import ProfileRepresendComponent from './components/user/ProfileRepresendCompone
 import AdminCategoryPanel from './components/category/AdminCategoryPanel.vue'
 import GroupListComponent from './components/groups/GroupListComponent.vue'
 import StudentsMainComponent from './components/students/StudentsMainComponent.vue'
+import UserStatisticComponent from './components/statistic/UserStatisticComponent.vue'
 
 import axios from 'axios'
 import VueRouter from 'vue-router'
@@ -46,9 +47,8 @@ const router = new VueRouter({
           { path: 'quiz', component: AdminCategoryPanel},
           { path: 'category', component: Category},
           { path: 'groups', component: GroupListComponent},
-          { path: 'students', component: StudentsMainComponent}
-
-
+          { path: 'students', component: StudentsMainComponent},
+          { path: 'details/:id',name:  'details', component: UserStatisticComponent}
       ]
     }
   ]
